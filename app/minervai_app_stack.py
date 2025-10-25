@@ -6,8 +6,8 @@ from aws_cdk import (
     CfnOutput,
     aws_lambda as lambda_,
 )
-from aws_cdk.aws_apigatewayv2_integrations_alpha import HttpLambdaIntegration
-from aws_cdk.aws_apigatewayv2_alpha import HttpApi
+from aws_cdk.aws_apigatewayv2_integrations import HttpLambdaIntegration
+from aws_cdk.aws_apigatewayv2 import HttpApi
 from dotenv import load_dotenv
 
 load_dotenv()
