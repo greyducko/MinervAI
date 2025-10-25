@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MinervAI</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css')}}"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{{ url_for('static', filename='minervaiLogo.png')}}"
+    />
+  </head>
+  <body>
+    <div class="home"><a href="/">Home</a></div>
+    <header>
+      <h1>MinervAI</h1>
+    </header>
+
+    <div class="description-wrapper">
+      <p class="description">Your AI Study Assistant :&#41</p>
+    </div>
+    <div><h2>Here are the results from your quiz...</h2></div>
+    <section>
+        <article>
+            {% for r in results %}
+                <div class="result">
+                    <p><strong>Question: {{ r.question }}</strong></p>
+                    <p><strong>Your Answer:</strong> {{ r.user_answer }}</p>
+                    <p><strong>Correct Answer:</strong> {{ r.correct_answer }}</p>
+                    <p style="color: {{ 'green' if r.is_correct == 'Correct' else 'red'}}">
+                    {{ r.is_correct }}!</p>
+                </div>   
+            {% endfor %}
+        </article>
+    </section>
+  </body>
+  <footer>
+    <div class="footer-left">
+      <a href="/about">About</a>
+    </div>
+    <div class="footer-right">
+      &copy; 2025 MinervAI
+    </div>
+  </footer>
+</html>

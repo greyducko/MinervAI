@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MinervAI</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css')}}"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{{ url_for('static', filename='minervaiLogo.png')}}"
+    />
+  </head>
+  <body>
+    <div class="home"><a href="/">Home</a></div>
+    <header>
+      <h1>MinervAI</h1>
+    </header>
+
+    <div class="description-wrapper">
+      <p class="description">Your AI Study Assistant :&#41</p>
+    </div>
+    <div><h2>Here is a quiz about your module...</h2></div>
+    <section class="quizzes">
+      
+      
+        
+        <div class="quiz-container">
+        <form method="POST" action="/quizzes">
+      
+          {% for entry in gemini_quizzes_response %}
+          {% set question_index = loop.index0 %}
+          <div class="question">
+            {% set question = entry['question'] %}
+            <p>{{loop.index0 + 1}}. {{ question }}</p>
+        
+            <div class="answers">
+              {% for answer in entry['answers'] %}
+              {% set answer_index = loop.index0 %}
+                <input 
+                  type="radio" 
+                  name="{{ question_index }}"
+                  value="{{ answer_index }}"
+                  
+                  id="answer-{{ question_index}}-{{ answer_index }}"
+                >
+                
+                <label for="answer-{{ question_index }}-{{ answer_index }}">
+                  {{ answer }}
+                </label><br>
+              {% endfor %} 
+             
+            </div>
+          </div>
+        {% endfor %}
+        <button class="submit-quiz" type="submit">Submit Quiz</button>
+        </form>
+    </div>
+    </section>
+  </body>
+  <footer>
+    <div class="footer-left">
+      <a href="/about">About</a>
+    </div>
+    <div class="footer-right">
+      &copy; 2025 MinervAI
+    </div>
+  </footer>
+</html>

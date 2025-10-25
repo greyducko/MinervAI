@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MinervAI</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css')}}"
+    />
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='minervaiLogo.png')}}" />
+  </head>
+  <body>
+    <header>
+      <h1>MinervAI</h1>
+    </header>
+
+    <div class="description-wrapper">
+      <p class="description">Your AI Study Assistant :&#41</p>
+    </div>
+
+    <section class="user-input">
+      <form class="user-input" action="/" method="POST">
+        <textarea
+          name="userInput"
+          placeholder="Paste your reading module or text here"
+          required
+        ></textarea>
+        <button onClick="showLoader()" type="submit">Submit</button>
+      </form>
+    </section>
+
+    <div id="loader" style="display: none">
+      <div class="spinner"></div>
+    </div>
+
+    {% if gemini_response %}
+    <section id="summaries">
+      <h2>Here is a summary of your module...</h2>
+      <article>{{ gemini_response | safe }}</article>
+    </section>
+    <div class="button-row">
+        <a href="/flashcards"><button>Flashcards</button></a>
+        <a href="/quizzes"><button>Quizzes</button></a>
+    </div>
+    {% endif %}
+  </body>
+  <footer>
+    <div class="footer-left">
+      <a href="/about">About</a>
+    </div>
+    <div class="footer-right">
+      &copy; 2025 MinervAI
+    </div>
+  </footer>
+  <script>
+    function showLoader() {
+      document.getElementById("loader").style.display = "flex";
+    }
+  </script>
+</html>
