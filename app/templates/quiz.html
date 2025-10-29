@@ -15,7 +15,10 @@
     />
   </head>
   <body>
-    <div class="home"><a href="/">Home</a></div>
+    <div class="navbar">
+      <a href="/">Home</a>
+      <a href="/flashcards" onclick="showLoader()">Flashcards</a>
+    </div>
     <header>
       <h1>MinervAI</h1>
     </header>
@@ -24,12 +27,12 @@
       <p class="description">Your AI Study Assistant :&#41</p>
     </div>
     <div><h2>Here is a quiz about your module...</h2></div>
-    <section class="quizzes">
+    <section class="quiz">
       
       
         
         <div class="quiz-container">
-        <form method="POST" action="/quizzes">
+        <form method="POST" action="/quiz">
       
           {% for entry in gemini_quizzes_response %}
           {% set question_index = loop.index0 %}
@@ -60,6 +63,10 @@
         </form>
     </div>
     </section>
+
+    <div id="loader" style="display: none">
+      <div class="spinner"></div>
+    </div>
   </body>
   <footer>
     <div class="footer-left">
@@ -69,4 +76,9 @@
       &copy; 2025 MinervAI
     </div>
   </footer>
+    <script>
+    function showLoader() {
+      document.getElementById("loader").style.display = "flex";
+    }
+  </script>
 </html>

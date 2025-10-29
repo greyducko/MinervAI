@@ -287,7 +287,7 @@ footer {
   color: #333;
 }
 
-.home {
+.navbar {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -296,11 +296,15 @@ footer {
   padding-top: 20px;
 }
 
+.navbar a {
+  margin-right: 15px;
+}
+
 p {
   color: white;
 }
 
-.quizzes {
+.quiz {
   font-family: "Roboto", sans-serif;
   color: white;
   

@@ -40,8 +40,8 @@
       <article>{{ gemini_response | safe }}</article>
     </section>
     <div class="button-row">
-        <a href="/flashcards"><button>Flashcards</button></a>
-        <a href="/quizzes"><button>Quizzes</button></a>
+        <a href="/flashcards"><button onClick="showLoader()">Flashcards</button></a>
+        <a href="/quiz"><button onClick="showLoader()">Quiz</button></a>
     </div>
     {% endif %}
   </body>

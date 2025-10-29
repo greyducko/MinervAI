@@ -15,7 +15,11 @@
     />
   </head>
   <body>
-    <div class="home"><a href="/">Home</a></div>
+    <div class="navbar">
+      <a href="/">Home</a>
+      <a href="/flashcards" onclick="showLoader()">Flashcards</a>
+      <a href="/quiz" onclick="showLoader()">Quiz</a>
+    </div>
     <header>
       <h1>MinervAI</h1>
     </header>
@@ -37,6 +41,9 @@
             {% endfor %}
         </article>
     </section>
+    <div id="loader" style="display: none">
+      <div class="spinner"></div>
+    </div>
   </body>
   <footer>
     <div class="footer-left">
@@ -46,4 +53,9 @@
       &copy; 2025 MinervAI
     </div>
   </footer>
+  <script>
+    function showLoader() {
+      document.getElementById("loader").style.display = "flex";
+    }
+  </script>
 </html>

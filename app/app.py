@@ -35,14 +35,14 @@ def flashcards():
         return render_template("flashcards.html", gemini_flashcards_response=flashcardDict)
 
 
-@app.route("/quizzes", methods=["GET", "POST"])
+@app.route("/quiz", methods=["GET", "POST"])
 def quizzes():
     if request.method == "GET":
         userInputData = session.get("userInputData")
         quizResponse = generate_quiz(userInputData)
         responseList = json.loads(quizResponse)  # converts from string to list
         session["responseList"] = responseList
-        return render_template("quizzes.html", gemini_quizzes_response=responseList)
+        return render_template("quiz.html", gemini_quizzes_response=responseList)
 
     if request.method == "POST":
         responseList = session.get("responseList")
