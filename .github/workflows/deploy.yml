@@ -34,7 +34,7 @@ jobs:
         with:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::848955331818:role/github-actions-oidc-role
-          role-session-name: ${{ github.repository }}-${{ github.sha }}
+          role-session-name: ${{ github.event.repository.name }}-${{ github.run_id }}
 
       - name: CDK Synth
         run: cdk synth
