@@ -269,7 +269,7 @@ footer {
   display: none;
   position: absolute;
   color: #333;
-  font-size: 1em;
+  font-size: 0.6em;
 }
 
 .card:hover .cardAnswer {
